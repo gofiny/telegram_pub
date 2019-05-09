@@ -1,6 +1,7 @@
 from app import app, bot
 from config import WebhookConf
 import bot_views
+import view
 import time
 
 
