@@ -2,7 +2,7 @@ class WebhookConf:
     API_TOKEN = '690204123:AAH2KDdj6S5If5TQkDvCANAIIJ-MBSfmkcE'
     WEBHOOK_HOST = 's156888.hostiman.com'
     WEBHOOK_PORT = 443
-    WEBHOOK_LISTEN = '0.0.0.0'
+    WEBHOOK_LISTEN = '217.182.21.102'
 
     WEBHOOK_SSL_CERT = '/keys/webhook_cert.pem'
     WEBHOOK_SSL_KEY = '/keys/webhook_pkey.key'
