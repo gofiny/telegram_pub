@@ -13,6 +13,6 @@ class WebhookConf:
 
 class Configuration:
     DEBUG = True
-    HOST = WebhookConf.WEBHOOK_LISTEN
-    PORT = WebhookConf.WEBHOOK_PORT
-    SSL_CONTEXT = (WebhookConf.WEBHOOK_SSL_CERT, WebhookConf.WEBHOOK_SSL_KEY)
+    #HOST = WebhookConf.WEBHOOK_LISTEN
+    #PORT = WebhookConf.WEBHOOK_PORT
+    #SSL_CONTEXT = (WebhookConf.WEBHOOK_SSL_CERT, WebhookConf.WEBHOOK_SSL_KEY)
