@@ -5,7 +5,7 @@ class WebhookConf:
     WEBHOOK_LISTEN = '217.182.21.102'
 
     WEBHOOK_SSL_CERT = '/etc/letsencrypt/csr/0000_crt-certbot.pem'
-    WEBHOOK_SSL_KEY = '/etc/letsencrypt/csr/0000_key-certbot.pem'
+    WEBHOOK_SSL_KEY = '/etc/letsencrypt/keys/0000_key-certbot.pem'
 
     WEBHOOK_URL_BASE = 'https://%s:%s' % (WEBHOOK_HOST, WEBHOOK_PORT)
     WEBHOOK_URL_PATH = '/%s/' % (API_TOKEN)
@@ -13,6 +13,3 @@ class WebhookConf:
 
 class Configuration:
     DEBUG = True
-    #HOST = WebhookConf.WEBHOOK_LISTEN
-    #PORT = WebhookConf.WEBHOOK_PORT
-    #SSL_CONTEXT = (WebhookConf.WEBHOOK_SSL_CERT, WebhookConf.WEBHOOK_SSL_KEY)
