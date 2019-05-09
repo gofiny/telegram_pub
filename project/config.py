@@ -4,8 +4,8 @@ class WebhookConf:
     WEBHOOK_PORT = 443
     WEBHOOK_LISTEN = '0.0.0.0'
 
-    WEBHOOK_SSL_CERT = '/keys/cert.pem'
-    WEBHOOK_SSL_KEY = '/keys/key.pem'
+    WEBHOOK_SSL_CERT = '/keys/webhook_cert.pem'
+    WEBHOOK_SSL_KEY = '/keys/webhook_pkey.key'
 
     WEBHOOK_URL_BASE = 'https://%s:%s' % (WEBHOOK_HOST, WEBHOOK_PORT)
     WEBHOOK_URL_PATH = '/%s/' % (API_TOKEN)
