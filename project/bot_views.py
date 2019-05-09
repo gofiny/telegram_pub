@@ -17,4 +17,9 @@ def webhook():
 
 @bot.message_handler(commands=['start'])
 def test(message):
-    bot.reply_to(message, text='Тестируем')
+    bot.reply_to(message, message.text)
+
+
+@bot.message_handler(func=lambda message: True, content_types=['text'])
+def welcome_mess(message):
+    bot.reply_to(message, message.text)
