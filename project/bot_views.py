@@ -2,6 +2,7 @@ from app import bot, app
 from config import WebhookConf
 import flask
 import telebot
+from keyboards import Keyboards
 
 
 @app.route(WebhookConf.WEBHOOK_URL_PATH, methods=['POST'])
@@ -17,7 +18,7 @@ def webhook():
 
 @bot.message_handler(commands=['start'])
 def test(message):
-    bot.reply_to(message, message.text)
+    bot.send_message(message.chat.id, reply_markup=Keyboards.main_menu(), text='Приветствую в моем демо боте!')
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
