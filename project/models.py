@@ -18,3 +18,10 @@ class Users(db.Model):
 
     def __repr__(self):
         return f'<[{self.id}]Username: {self.username}>'
+
+
+class Subscriptions(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(30))
+    work_time = db.Column(db.Integer)  # Рабочее время подписки
+    description = db.Column(db.Text)
