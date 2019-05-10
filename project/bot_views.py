@@ -23,4 +23,5 @@ def test(message):
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def welcome_mess(message):
-    bot.reply_to(message, message.text)
+    if message.text.lower() == 'подписки':
+        pass
