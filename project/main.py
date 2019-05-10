@@ -1,4 +1,4 @@
-from app import app, bot
+from app import app, bot, db
 from config import WebhookConf
 import bot_views
 import view

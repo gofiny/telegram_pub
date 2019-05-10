@@ -13,3 +13,5 @@ class WebhookConf:
 
 class Configuration:
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://telegram:Kw2E_zd7As@localhost/telegram_pub'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
