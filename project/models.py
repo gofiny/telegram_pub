@@ -11,7 +11,7 @@ class Users(db.Model):
 
     @staticmethod
     def get_user(chat_id):
-        return Users.query.filter(Users.chat_id==chat_id)
+        return Users.query.filter(Users.chat_id==chat_id).all()
 
     def __init__(self, *args, **kwargs):
         super(Users, self).__init__(*args, **kwargs)
