@@ -7,7 +7,7 @@ class Keyboards:
     def main_menu():
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.row('📰 Подписки')
-        keyboard.row('Помощь ❔')
+        keyboard.row('❓ Помощь')
 
         return keyboard
 
@@ -20,3 +20,5 @@ class Keyboards:
             types.InlineKeyboardButton(text='Прогрессивная', callback_data='progressive_subs_info'),
             types.InlineKeyboardButton(text='Ультра', callback_data='ultra_subs_info')
         )
+
+        return keyboard
