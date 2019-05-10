@@ -8,7 +8,7 @@ class WebhookConf:
     WEBHOOK_SSL_KEY = '/keys/privkey.pem'
 
     WEBHOOK_URL_BASE = 'https://%s:%s' % (WEBHOOK_HOST, WEBHOOK_PORT)
-    WEBHOOK_URL_PATH = '/%s/' % (API_TOKEN)
+    WEBHOOK_URL_PATH = '/%s' % (API_TOKEN)
 
 
 class Configuration:
