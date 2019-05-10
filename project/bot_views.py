@@ -24,9 +24,10 @@ def test(message):
     if user != []:
         pass
     else:
-        new_user = Users(chat_id=message.chat.id)
-        print(dir(message))
-        print('\n\n', dir(message.chat))
+        new_user = Users(chat_id=message.chat.id, username=message.chat.username, first_name=message.chat.first_name)
+        db.session.add(new_user)
+        db.session.commit()
+
     bot.send_message(message.chat.id, reply_markup=Keyboards.main_menu(), text='Приветствую в моем демо боте!')
 
 
