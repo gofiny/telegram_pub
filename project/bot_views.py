@@ -20,6 +20,7 @@ def webhook():
 @bot.message_handler(commands=['start'])
 def test(message):
     user = Users.get_user(message.chat.id)
+    print(user)
     if user != []:
         pass
     else:
