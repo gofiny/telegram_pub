@@ -9,6 +9,10 @@ class Users(db.Model):
     first_name = db.Column(db.String(50), null=True, default=None)
     reg_date = db.Column(db.DateTime, default=datetime.now())
 
+    @staticmethod
+    def get_user(chat_id):
+        return Users.query.filter(Users.chat_id==chat_id)
+
     def __init__(self, *args, **kwargs):
         super(Users, self).__init__(*args, **kwargs)
 

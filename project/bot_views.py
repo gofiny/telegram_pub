@@ -1,4 +1,5 @@
-from app import bot, app
+from app import bot, app, db
+from models import Users
 from config import WebhookConf
 import flask
 import telebot
@@ -18,6 +19,13 @@ def webhook():
 
 @bot.message_handler(commands=['start'])
 def test(message):
+    user = Users.get_user(message.chat.id)
+    if user != []:
+        pass
+    else:
+        new_user = Users(chat_id=message.chat.id)
+        print(dir(message))
+        print('\n\n', dir(message.chat))
     bot.send_message(message.chat.id, reply_markup=Keyboards.main_menu(), text='Приветствую в моем демо боте!')
 
 
