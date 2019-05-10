@@ -6,7 +6,7 @@ import time
 
 
 if __name__ == '__main__':
-    bot.remove_webhook()
+    #bot.remove_webhook()
     #time.sleep(2)
     #bot.set_webhook(url=WebhookConf.WEBHOOK_URL_BASE + WebhookConf.WEBHOOK_URL_PATH,
                    # certificate=open(WebhookConf.WEBHOOK_SSL_CERT, 'r'))
