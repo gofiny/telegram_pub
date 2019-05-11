@@ -38,4 +38,4 @@ class Subscriptions(db.Model):
         super(Subscriptions, self).__init__(*args, **kwargs)
 
     def __repr__(self):
-        return f'<[{self.id}]Title: {self.title}>'
+        return f'{self.title}'
