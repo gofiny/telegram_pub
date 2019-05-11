@@ -16,3 +16,5 @@ class Configuration:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://telegram:telpass123@localhost/telegram'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = 'there are secret key'
+    SECURITY_PASSWORD_SALT = 'some salt'
+    SECURITY_PASSWORD_HASH = 'bcrypt'

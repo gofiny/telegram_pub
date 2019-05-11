@@ -1,5 +1,5 @@
-from app import bot, app, db
-from models import Users
+from app import bot, app, db, user_datastore
+from models import Users, Role
 from config import WebhookConf
 import flask
 import telebot
@@ -24,13 +24,14 @@ def test(message):
     chat_id = message.chat.id
     username = message.chat.username
     first_name = message.chat.first_name
+    reg_date = datetime.now()
 
     if user is not None:
         user.username = username
         user.first_name = first_name
-        user.reg_date = datetime.now()
+        user.reg_date = reg_date
     else:
-        user = Users(chat_id=chat_id, username=username, first_name=first_name, reg_date=datetime.now())
+        user = user_datastore.create_user(chat_id=chat_id, username=username, first_name=first_name, reg_date=reg_date)
 
     db.session.add(user)
     db.session.commit()
@@ -44,3 +45,10 @@ def welcome_mess(message):
         bot.send_message(message.chat.id, reply_markup=Keyboards.subscribes(), text='Выберите нужный пункт')
     elif message.text == '❓ Помощь':
         bot.send_message(message.chat.id, text='Тут будет помощь')
+    elif message.text.lower() == 'создать':
+        user = Users.query.first()
+        user_datastore.create_role(name='admin', description='admin for web interface')
+        db.session.commit()
+        role = Role.query.first()
+        user_datastore.add_role_to_user(user, role)
+        db.session.commit()
