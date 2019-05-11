@@ -45,21 +45,21 @@ class Subscriptions(db.Model):
 
 users_roles = db.Table(
     'users_roles',
-    db.Column('user_id', db.Integer, db.ForeignKey('siteusers.id')),
-    db.Column('role_id', db.Integer, db.ForeignKey('role.id'))
+    db.Column('user_id', db.Integer(), db.ForeignKey('siteusers.id')),
+    db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
 )
 
 
 class SiteUsers(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(255))
-    active = db.Column(db.Boolean)
-    roles = db.relationship('Role', secondary=users_roles, backref=db.backref('siteusers', lazy='dynamic'))
+    active = db.Column(db.Boolean())
+    roles = db.relationship('Role', secondary=users_roles, backref=db.backref('site_users', lazy='dynamic'))
 
 
 class Role(db.Model, RoleMixin):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(30), unique=True)
     description = db.Column(db.String(255))
 
