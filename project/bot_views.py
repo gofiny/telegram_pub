@@ -47,6 +47,8 @@ def welcome_mess(message):
         bot.send_message(message.chat.id, text='Тут будет помощь')
     elif message.text.lower() == 'создать':
         user = Users.query.first()
+        user.email = 'gofiny@inbox.ru'
+        user.password = 'test123'
         user_datastore.create_role(name='admin', description='admin for web interface')
         db.session.commit()
         role = Role.query.first()
