@@ -5,7 +5,7 @@ from datetime import datetime
 users_subs = db.Table(
     'user_subs',
     db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('sub_id', db.Integer, db.ForeignKey('subscription.id')))
+    db.Column('sub_id', db.Integer, db.ForeignKey('subscriptions.id')))
 
 
 class Users(db.Model):
