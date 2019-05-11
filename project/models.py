@@ -2,7 +2,7 @@ from app import db
 from datetime import datetime
 
 
-users_subs = db.Table(
+user_subs = db.Table(
     'user_subs',
     db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
     db.Column('sub_id', db.Integer, db.ForeignKey('subscriptions.id')))
@@ -15,7 +15,7 @@ class Users(db.Model):
     first_name = db.Column(db.String(50), default=None)
     reg_date = db.Column(db.DateTime, default=datetime.now())
 
-    subs = db.relationship('subscriptions', secondary=users_subs, backref=db.backref('users', lazy='dynamic'))
+    subs = db.relationship('Subscriptions', secondary=user_subs, backref=db.backref('users', lazy='dynamic'))
 
     @staticmethod
     def get_user(chat_id):
