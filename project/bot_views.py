@@ -21,12 +21,13 @@ def webhook():
 def test(message):
     user = Users.get_user(message.chat.id)
     print(user)
-    if user != []:
-        pass
+    if user is not None:
+        user.username = message.chat.username
     else:
-        new_user = Users(chat_id=message.chat.id, username=message.chat.username, first_name=message.chat.first_name)
-        db.session.add(new_user)
-        db.session.commit()
+        user = Users(chat_id=message.chat.id, username=message.chat.username, first_name=message.chat.first_name)
+
+    db.session.add(user)
+    db.session.commit()
 
     bot.send_message(message.chat.id, reply_markup=Keyboards.main_menu(), text='Приветствую в моем демо боте!')
 
