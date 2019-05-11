@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for, request
 import telebot
 
 from config import Configuration, WebhookConf
@@ -6,9 +6,9 @@ from config import Configuration, WebhookConf
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-from flask_admin import Admin
+from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
-from flask_security import SQLAlchemyUserDatastore, Security
+from flask_security import SQLAlchemyUserDatastore, Security, current_user
 
 
 bot = telebot.TeleBot(WebhookConf.API_TOKEN)
@@ -21,9 +21,27 @@ manager.add_command('db', MigrateCommand)
 
 # Admin
 from models import Users, Subscriptions, Role
-admin = Admin(app)
-admin.add_view(ModelView(Users, db.session))
-admin.add_view(ModelView(Subscriptions, db.session))
+
+
+class AdminView(ModelView):
+    def is_accessible(self):
+        return current_user.has_role('admin')
+
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect(url_for('security.login', next=request.url))
+
+
+class HomeAdminView(AdminIndexView):
+    def is_accessible(self):
+        return current_user.has_role('admin')
+
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect(url_for('security.login', next=request.url))
+
+
+admin = Admin(app, 'FlaskApp', url='/', index_view=HomeAdminView)
+admin.add_view(AdminView(Users, db.session))
+admin.add_view(AdminView(Subscriptions, db.session))
 
 # Security
 user_datastore = SQLAlchemyUserDatastore(db, Users, Role)
