@@ -9,8 +9,6 @@ from flask_script import Manager
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
-from models import Users, Subscriptions
-
 
 bot = telebot.TeleBot(WebhookConf.API_TOKEN)
 app = Flask(__name__)
@@ -21,6 +19,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 # Admin
+from models import Users, Subscriptions
 admin = Admin(app)
 admin.add_view(ModelView(Users, db.session))
 admin.add_view(ModelView(Subscriptions, db.session))
