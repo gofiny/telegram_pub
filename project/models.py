@@ -45,8 +45,8 @@ class Subscriptions(db.Model):
 
 users_roles = db.Table(
     'users_roles',
-    db.Column('user_id', db.Integer(), db.ForeignKey('siteusers.id')),
-    db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
+    db.Column('user_id', db.Integer(), db.ForeignKey('SiteUsers.id')),
+    db.Column('role_id', db.Integer(), db.ForeignKey('Role.id'))
 )
 
 
