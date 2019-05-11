@@ -39,7 +39,7 @@ class HomeAdminView(AdminIndexView):
         return redirect(url_for('security.login', next=request.url))
 
 
-admin = Admin(app, 'FlaskApp', url='/', index_view=HomeAdminView)
+admin = Admin(app, 'FlaskApp', url='/', index_view=HomeAdminView(name='Home'))
 admin.add_view(AdminView(Users, db.session))
 admin.add_view(AdminView(Subscriptions, db.session))
 
