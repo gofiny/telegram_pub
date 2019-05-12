@@ -16,6 +16,13 @@ class Keyboards:
         keyboard = types.InlineKeyboardMarkup()
         keyboard.row(types.InlineKeyboardButton(text='Мои подписки', callback_data='my_subs_info'))
         for sub in subs:
-            keyboard.row(types.InlineKeyboardButton(text=sub.title, callback_data=sub.data))
+            keyboard.row(types.InlineKeyboardButton(text=sub.title, callback_data=f'sub_info {sub.data}'))
+
+        return keyboard
+
+    @staticmethod
+    def buy_button(sub_data):
+        keyboard = types.InlineKeyboardMarkup()
+        keyboard.row(types.InlineKeyboardButton(text='Приобрести', callback_data=f'sub_buy {sub_data}'))
 
         return keyboard

@@ -40,10 +40,23 @@ def test(message):
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
-def welcome_mess(message):
+def main_menu(message):
     if message.text == '📰 Подписки':
         subscriptions = Subscriptions.get_subs()
         keyboard = Keyboards.subscribes(subscriptions)
         bot.send_message(message.chat.id, reply_markup=keyboard, text='Выберите нужный пункт')
     elif message.text == '❓ Помощь':
         bot.send_message(message.chat.id, text='Тут будет помощь')
+
+
+@bot.callback_query_handler(func=lambda call: True)
+def callbacks(call):
+    chat_id = call.message.caht.id
+    message_id = call.message.message_id
+    data = call.data.split()
+    if data[0] == 'sub_info':
+        sub = Subscriptions.query.filter(Subscriptions.data == data[1]).first()
+        text = f'{sub.title}\n\ns{sub.description}\nАктивна {sub.work_time} дней\nСтоимость: {sub.price}'
+        keyboard = Keyboards.buy_button(sub.data)
+        bot.send_message(chat_id, message_id, text, reply_markup=keyboard)
+

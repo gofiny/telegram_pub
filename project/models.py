@@ -30,7 +30,7 @@ class Users(db.Model, UserMixin):
 
     @staticmethod
     def get_user(chat_id):
-        return Users.query.filter(Users.chat_id==chat_id).first()
+        return Users.query.filter(Users.chat_id == chat_id).first()
 
     def __init__(self, *args, **kwargs):
         super(Users, self).__init__(*args, **kwargs)
@@ -45,6 +45,7 @@ class Subscriptions(db.Model):
     data = db.Column(db.String(30), default=None, nullable=True)  # Английские символы, для использования колбэков
     work_time = db.Column(db.Integer)  # Рабочее время подписки
     description = db.Column(db.Text)
+    price = db.Column(db.Integer, default=0)  # Цена подписки, целое число!
 
     @staticmethod
     def get_subs():
