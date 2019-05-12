@@ -49,7 +49,7 @@ class Subscriptions(db.Model):
 
     @staticmethod
     def get_subs():
-        return Subscriptions.query.all()
+        return Subscriptions.query.all().order_by(Subscriptions.price.desc())
 
     def __init__(self, *args, **kwargs):
         super(Subscriptions, self).__init__(*args, **kwargs)
