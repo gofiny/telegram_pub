@@ -51,7 +51,7 @@ def main_menu(message):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callbacks(call):
-    chat_id = call.message.caht.id
+    chat_id = call.message.chat.id
     message_id = call.message.message_id
     data = call.data.split()
     if data[0] == 'sub_info':
