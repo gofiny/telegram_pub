@@ -1,5 +1,5 @@
 from app import bot, app, db, user_datastore
-from models import Users, Role
+from models import Users, Subscriptions
 from config import WebhookConf
 import flask
 import telebot
@@ -42,15 +42,8 @@ def test(message):
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def welcome_mess(message):
     if message.text == '📰 Подписки':
-        bot.send_message(message.chat.id, reply_markup=Keyboards.subscribes(), text='Выберите нужный пункт')
+        subscriptions = Subscriptions.get_subs()
+        keyboard = Keyboards.subscribes(subscriptions)
+        bot.send_message(message.chat.id, reply_markup=keyboard, text='Выберите нужный пункт')
     elif message.text == '❓ Помощь':
         bot.send_message(message.chat.id, text='Тут будет помощь')
-    elif message.text.lower() == 'создать':
-        user = Users.query.first()
-        user.email = 'gofiny@inbox.ru'
-        user.password = 'test123'
-        user_datastore.create_role(name='admin', description='admin for web interface')
-        db.session.commit()
-        role = Role.query.first()
-        user_datastore.add_role_to_user(user, role)
-        db.session.commit()

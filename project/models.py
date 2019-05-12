@@ -42,8 +42,13 @@ class Users(db.Model, UserMixin):
 class Subscriptions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(30))
+    data = db.Column(db.String(30), default=None, nullable=True)  # Английские символы, для использования колбэков
     work_time = db.Column(db.Integer)  # Рабочее время подписки
     description = db.Column(db.Text)
+
+    @staticmethod
+    def get_subs():
+        return Subscriptions.query.all()
 
     def __init__(self, *args, **kwargs):
         super(Subscriptions, self).__init__(*args, **kwargs)
