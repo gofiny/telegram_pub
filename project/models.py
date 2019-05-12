@@ -5,7 +5,8 @@ from flask_security import UserMixin, RoleMixin
 user_subs = db.Table(
     'user_subs',
     db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('sub_id', db.Integer, db.ForeignKey('subscriptions.id'))
+    db.Column('sub_id', db.Integer, db.ForeignKey('subscriptions.id')),
+    db.Column('buy_date', db.DateTime)
 )
 
 user_roles = db.Table(
@@ -50,6 +51,10 @@ class Subscriptions(db.Model):
     @staticmethod
     def get_subs():
         return Subscriptions.query.order_by(Subscriptions.price.desc())
+
+    @staticmethod
+    def get_user_subs(chat_id):
+        return Subscriptions.query.filter(Subscriptions.users.chat_id == chat_id).all()
 
     def __init__(self, *args, **kwargs):
         super(Subscriptions, self).__init__(*args, **kwargs)

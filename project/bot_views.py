@@ -54,9 +54,20 @@ def callbacks(call):
     chat_id = call.message.chat.id
     message_id = call.message.message_id
     data = call.data.split()
+
     if data[0] == 'sub_info':
         sub = Subscriptions.query.filter(Subscriptions.data == data[1]).first()
         text = f'{sub.title}\n\n{sub.description}\nАктивна {sub.work_time} дней\nСтоимость: {sub.price}'
         keyboard = Keyboards.buy_button(sub.data)
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
+    elif data[0] == 'my_subs_info':
+        subs = Subscriptions.get_user_subs(chat_id)
+        if subs is None:
+            bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
+        else:
+            text = 'Нажмите на подписку чтобы получить подробную информацию по ней'
+            keyboard = Keyboards.my_subs_info(subs)
+            bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
+    elif data[0] == 'info_about':
+        bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Скоро будет готово')
 
