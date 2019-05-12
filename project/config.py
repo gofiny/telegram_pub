@@ -10,6 +10,9 @@ class WebhookConf:
     WEBHOOK_URL_BASE = 'https://%s:%s' % (WEBHOOK_HOST, WEBHOOK_PORT)
     WEBHOOK_URL_PATH = '/%s/' % (API_TOKEN)
 
+    PAYMENT_SECRET_WORD_ONE = 'vfct95uu'
+    PAYMENT_SECRET_WORD_TWO = 'ktxso9lo'
+
 
 class Configuration:
     DEBUG = True

@@ -56,7 +56,7 @@ def callbacks(call):
     data = call.data.split()
     if data[0] == 'sub_info':
         sub = Subscriptions.query.filter(Subscriptions.data == data[1]).first()
-        text = f'{sub.title}\n\ns{sub.description}\nАктивна {sub.work_time} дней\nСтоимость: {sub.price}'
+        text = f'{sub.title}\n\n{sub.description}\nАктивна {sub.work_time} дней\nСтоимость: {sub.price}'
         keyboard = Keyboards.buy_button(sub.data)
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
 
