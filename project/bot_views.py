@@ -69,5 +69,9 @@ def callbacks(call):
             keyboard = Keyboards.my_subs_info(subs)
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
     elif data[0] == 'info_about':
+        all_subs = Subscriptions.get_subs()
+        for sub in all_subs:
+            print(sub.users)
+            print(type(sub.users))
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Скоро будет готово')
 
