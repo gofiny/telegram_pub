@@ -61,17 +61,16 @@ def callbacks(call):
         keyboard = Keyboards.buy_button(sub.data)
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
     elif data[0] == 'my_subs_info':
-        subs = Subscriptions.get_user_subs(chat_id)
-        if subs is None:
-            bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
-        else:
-            text = 'Нажмите на подписку чтобы получить подробную информацию по ней'
-            keyboard = Keyboards.my_subs_info(subs)
-            bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
-    elif data[0] == 'info_about':
         all_subs = Subscriptions.get_subs()
         for sub in all_subs:
             print(sub.users)
             print(type(sub.users))
+        # if subs is None:
+        #     bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
+        # else:
+        #     text = 'Нажмите на подписку чтобы получить подробную информацию по ней'
+        #     keyboard = Keyboards.my_subs_info(subs)
+        #     bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
+    elif data[0] == 'info_about':
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Скоро будет готово')
 
