@@ -52,6 +52,10 @@ class Subscriptions(db.Model):
     def get_subs():
         return Subscriptions.query.order_by(Subscriptions.price.desc())
 
+    @staticmethod
+    def get_user_subs(chat_id):
+        return Subscriptions.query.filter(Subscriptions.users.filter(Users.chat_id == chat_id)).all()
+
     def __init__(self, *args, **kwargs):
         super(Subscriptions, self).__init__(*args, **kwargs)
 
