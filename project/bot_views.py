@@ -61,7 +61,7 @@ def callbacks(call):
         keyboard = Keyboards.buy_button(sub.data)
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
     elif data[0] == 'my_subs_info':
-        all_subs = Subscriptions.get_user_subs()
+        all_subs = Subscriptions.get_user_subs(chat_id)
         for sub in all_subs:
             print('yes')
         # for sub in all_subs:
