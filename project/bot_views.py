@@ -63,7 +63,7 @@ def callbacks(call):
     elif data[0] == 'my_subs_info':
         all_subs = Subscriptions.get_subs()
         for sub in all_subs:
-            if sub.users.fitler(Users.chat_id == chat_id).first():
+            if sub.users.filter(Users.chat_id == chat_id).first():
                 print('yes')
         # if subs is None:
         #     bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
