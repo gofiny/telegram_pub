@@ -1,5 +1,5 @@
 from app import bot, app, db, user_datastore
-from models import Users, Subscriptions
+from models import Users, Subscriptions, user_subs
 from config import WebhookConf
 import flask
 import telebot
@@ -65,6 +65,8 @@ def callbacks(call):
         text = ''
         for sub in all_subs:
             if sub.users.filter(Users.chat_id == chat_id).first():
+                days = user_subs.query.filter(Users.chat_id == chat_id).all()
+                print(days)
                 text += f'{sub.title}\n{sub.description}\nОсталось столько-то дней\n\n'
         if text == '':
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
