@@ -65,8 +65,8 @@ def callbacks(call):
         text = ''
         for sub in all_subs:
             if sub.users.filter(Users.chat_id == chat_id).first():
-                days = dir(user_subs)
-                print(days)
+                days = dir(user_subs.c)
+                print(days, '\n\n', dir(user_subs.select))
                 text += f'{sub.title}\n{sub.description}\nОсталось столько-то дней\n\n'
         if text == '':
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
