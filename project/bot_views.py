@@ -65,7 +65,7 @@ def callbacks(call):
         text = ''
         for sub in all_subs:
             if sub.users.filter(Users.chat_id == chat_id).first():
-                days = user_subs.query.filter(Users.chat_id == chat_id).all()
+                days = dir(user_subs)
                 print(days)
                 text += f'{sub.title}\n{sub.description}\nОсталось столько-то дней\n\n'
         if text == '':
