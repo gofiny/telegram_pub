@@ -1,11 +1,11 @@
 class WebhookConf:
     API_TOKEN = '690204123:AAH2KDdj6S5If5TQkDvCANAIIJ-MBSfmkcE'
-    WEBHOOK_HOST = 's156888.hostiman.com'
+    WEBHOOK_HOST = 'manage-tasks.ru'
     WEBHOOK_PORT = 443
     WEBHOOK_LISTEN = '217.182.21.102'
 
-    WEBHOOK_SSL_CERT = '/keys/cert.pem'
-    WEBHOOK_SSL_KEY = '/keys/priv.key'
+    WEBHOOK_SSL_CERT = '/manage-tasks.ru/site/ssl/fullchain.pem'
+    WEBHOOK_SSL_KEY = '/manage-tasks.ru/site/ssl/server.key'
 
     WEBHOOK_URL_BASE = 'https://%s:%s' % (WEBHOOK_HOST, WEBHOOK_PORT)
     WEBHOOK_URL_PATH = '/%s/' % (API_TOKEN)
