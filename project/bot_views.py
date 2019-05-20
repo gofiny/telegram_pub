@@ -5,6 +5,16 @@ import flask
 import telebot
 from keyboards import Keyboards
 from datetime import datetime
+import time
+
+
+@app.route('/set_hook/')
+def set_hook():
+    bot.remove_webhook()
+    time.sleep(2)
+    bot.set_webhook(url=WebhookConf.WEBHOOK_URL_BASE + WebhookConf.WEBHOOK_URL_PATH,
+                    certificate=open(WebhookConf.WEBHOOK_SSL_CERT, 'r'))
+    return 'ok'
 
 
 @app.route(WebhookConf.WEBHOOK_URL_PATH, methods=['POST'])

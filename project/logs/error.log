@@ -1,41 +1,26 @@
-[Sun May 19 20:14:54.219766 2019] [wsgi:error] [pid 29410:tid 140278983743232] [client 176.59.140.92:41520] Timeout when reading response headers from daemon process 'telegram': /tel_pub/telegram_pub/project/bot.wsgi
-[Sun May 19 20:29:58.558187 2019] [ssl:warn] [pid 30195:tid 140172308167616] AH01909: telegram_pub:443:0 server certificate does NOT include an ID which matches the server name
-[Sun May 19 20:29:58.564535 2019] [ssl:warn] [pid 30196:tid 140172308167616] AH01909: telegram_pub:443:0 server certificate does NOT include an ID which matches the server name
-[Sun May 19 20:33:21.564434 2019] [ssl:warn] [pid 30296:tid 140118350719936] AH01909: telegram_pub:443:0 server certificate does NOT include an ID which matches the server name
-[Sun May 19 20:33:21.571906 2019] [ssl:warn] [pid 30297:tid 140118350719936] AH01909: telegram_pub:443:0 server certificate does NOT include an ID which matches the server name
-[Sun May 19 20:35:07.782206 2019] [wsgi:error] [pid 30383:tid 140276604835584] [remote 176.59.140.92:41784] mod_wsgi (pid=30383, process='telegram', application=''): Failed to parse WSGI script file '/tel_pub/telegram_pub/project/bot.wsgi'.
-[Sun May 19 20:35:07.782281 2019] [wsgi:error] [pid 30383:tid 140276604835584] [remote 176.59.140.92:41784] mod_wsgi (pid=30383): Exception occurred processing WSGI script '/tel_pub/telegram_pub/project/bot.wsgi'.
-[Sun May 19 20:35:07.785526 2019] [wsgi:error] [pid 30383:tid 140276604835584] [remote 176.59.140.92:41784]   File "/tel_pub/telegram_pub/project/bot.wsgi", line 6
-[Sun May 19 20:35:07.785547 2019] [wsgi:error] [pid 30383:tid 140276604835584] [remote 176.59.140.92:41784]     exec(file_.read(), dict(__file__=activate=this))
-[Sun May 19 20:35:07.785570 2019] [wsgi:error] [pid 30383:tid 140276604835584] [remote 176.59.140.92:41784]                                              ^
-[Sun May 19 20:35:07.785577 2019] [wsgi:error] [pid 30383:tid 140276604835584] [remote 176.59.140.92:41784] SyntaxError: invalid syntax
-[Sun May 19 20:40:20.763007 2019] [wsgi:error] [pid 30489:tid 139664688506624] [remote 176.59.140.92:41820] mod_wsgi (pid=30489): Target WSGI script '/tel_pub/telegram_pub/project/bot.wsgi' cannot be loaded as Python module.
-[Sun May 19 20:40:20.763069 2019] [wsgi:error] [pid 30489:tid 139664688506624] [remote 176.59.140.92:41820] mod_wsgi (pid=30489): Exception occurred processing WSGI script '/tel_pub/telegram_pub/project/bot.wsgi'.
-[Sun May 19 20:40:20.766897 2019] [wsgi:error] [pid 30489:tid 139664688506624] [remote 176.59.140.92:41820] Traceback (most recent call last):
-[Sun May 19 20:40:20.766922 2019] [wsgi:error] [pid 30489:tid 139664688506624] [remote 176.59.140.92:41820]   File "/tel_pub/telegram_pub/project/bot.wsgi", line 6, in <module>
-[Sun May 19 20:40:20.766926 2019] [wsgi:error] [pid 30489:tid 139664688506624] [remote 176.59.140.92:41820]     execfile(activate_this, dict(__file__=activate_this))
-[Sun May 19 20:40:20.766935 2019] [wsgi:error] [pid 30489:tid 139664688506624] [remote 176.59.140.92:41820] NameError: name 'execfile' is not defined
-[Sun May 19 20:43:08.522725 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41842] mod_wsgi (pid=30577): Target WSGI script '/tel_pub/telegram_pub/project/bot.wsgi' cannot be loaded as Python module.
-[Sun May 19 20:43:08.522788 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41842] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/tel_pub/telegram_pub/project/bot.wsgi'.
-[Sun May 19 20:43:08.526345 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41842] Traceback (most recent call last):
-[Sun May 19 20:43:08.526372 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41842]   File "/tel_pub/telegram_pub/project/bot.wsgi", line 6, in <module>
-[Sun May 19 20:43:08.526375 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41842]     sys.path.insert(0, PROJECT_DIR)
-[Sun May 19 20:43:08.526385 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41842] NameError: name 'PROJECT_DIR' is not defined
-[Sun May 19 20:43:09.848385 2019] [wsgi:error] [pid 30577:tid 139926098994944] [remote 176.59.140.92:41840] mod_wsgi (pid=30577): Target WSGI script '/tel_pub/telegram_pub/project/bot.wsgi' cannot be loaded as Python module.
-[Sun May 19 20:43:09.848420 2019] [wsgi:error] [pid 30577:tid 139926098994944] [remote 176.59.140.92:41840] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/tel_pub/telegram_pub/project/bot.wsgi'.
-[Sun May 19 20:43:09.848468 2019] [wsgi:error] [pid 30577:tid 139926098994944] [remote 176.59.140.92:41840] Traceback (most recent call last):
-[Sun May 19 20:43:09.848484 2019] [wsgi:error] [pid 30577:tid 139926098994944] [remote 176.59.140.92:41840]   File "/tel_pub/telegram_pub/project/bot.wsgi", line 6, in <module>
-[Sun May 19 20:43:09.848487 2019] [wsgi:error] [pid 30577:tid 139926098994944] [remote 176.59.140.92:41840]     sys.path.insert(0, PROJECT_DIR)
-[Sun May 19 20:43:09.848496 2019] [wsgi:error] [pid 30577:tid 139926098994944] [remote 176.59.140.92:41840] NameError: name 'PROJECT_DIR' is not defined
-[Sun May 19 20:46:26.882766 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41962] mod_wsgi (pid=30577): Target WSGI script '/tel_pub/telegram_pub/project/bot.wsgi' cannot be loaded as Python module.
-[Sun May 19 20:46:26.882801 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41962] mod_wsgi (pid=30577): Exception occurred processing WSGI script '/tel_pub/telegram_pub/project/bot.wsgi'.
-[Sun May 19 20:46:26.882845 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41962] Traceback (most recent call last):
-[Sun May 19 20:46:26.882860 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41962]   File "/tel_pub/telegram_pub/project/bot.wsgi", line 6, in <module>
-[Sun May 19 20:46:26.882863 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41962]     sys.path.insert(0, PROJECT_DIR)
-[Sun May 19 20:46:26.882872 2019] [wsgi:error] [pid 30577:tid 139926132565760] [remote 176.59.140.92:41962] NameError: name 'PROJECT_DIR' is not defined
-[Sun May 19 20:47:22.102049 2019] [wsgi:error] [pid 30675:tid 139726061876992] [remote 176.59.140.92:41964] mod_wsgi (pid=30675, process='telegram', application=''): Failed to parse WSGI script file '/tel_pub/telegram_pub/project/bot.wsgi'.
-[Sun May 19 20:47:22.102134 2019] [wsgi:error] [pid 30675:tid 139726061876992] [remote 176.59.140.92:41964] mod_wsgi (pid=30675): Exception occurred processing WSGI script '/tel_pub/telegram_pub/project/bot.wsgi'.
-[Sun May 19 20:47:22.105359 2019] [wsgi:error] [pid 30675:tid 139726061876992] [remote 176.59.140.92:41964]   File "/tel_pub/telegram_pub/project/bot.wsgi", line 6
-[Sun May 19 20:47:22.105374 2019] [wsgi:error] [pid 30675:tid 139726061876992] [remote 176.59.140.92:41964]     sys.path.insert(0, /tel_pub/telegram_pub/project/)
-[Sun May 19 20:47:22.105386 2019] [wsgi:error] [pid 30675:tid 139726061876992] [remote 176.59.140.92:41964]                        ^
-[Sun May 19 20:47:22.105392 2019] [wsgi:error] [pid 30675:tid 139726061876992] [remote 176.59.140.92:41964] SyntaxError: invalid syntax
+
+[Mon May 20 06:57:05.874749 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215] mod_wsgi (pid=2250): Exception occurred processing WSGI script '/tel_pub/telegram_pub/project/bot.wsgi'.
+[Mon May 20 06:57:05.875517 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215] Traceback (most recent call last):
+[Mon May 20 06:57:05.875559 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2309, in __call__
+[Mon May 20 06:57:05.875563 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     return self.wsgi_app(environ, start_response)
+[Mon May 20 06:57:05.875567 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2295, in wsgi_app
+[Mon May 20 06:57:05.875570 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     response = self.handle_exception(e)
+[Mon May 20 06:57:05.875573 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1741, in handle_exception
+[Mon May 20 06:57:05.875576 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     reraise(exc_type, exc_value, tb)
+[Mon May 20 06:57:05.875579 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 35, in reraise
+[Mon May 20 06:57:05.875582 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     raise value
+[Mon May 20 06:57:05.875585 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2292, in wsgi_app
+[Mon May 20 06:57:05.875587 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     response = self.full_dispatch_request()
+[Mon May 20 06:57:05.875591 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1815, in full_dispatch_request
+[Mon May 20 06:57:05.875593 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     rv = self.handle_user_exception(e)
+[Mon May 20 06:57:05.875596 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1718, in handle_user_exception
+[Mon May 20 06:57:05.875599 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     reraise(exc_type, exc_value, tb)
+[Mon May 20 06:57:05.875602 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 35, in reraise
+[Mon May 20 06:57:05.875605 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     raise value
+[Mon May 20 06:57:05.875608 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1813, in full_dispatch_request
+[Mon May 20 06:57:05.875610 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     rv = self.dispatch_request()
+[Mon May 20 06:57:05.875613 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1799, in dispatch_request
+[Mon May 20 06:57:05.875616 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon May 20 06:57:05.875619 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]   File "/tel_pub/telegram_pub/project/bot_views.py", line 16, in set_hook
+[Mon May 20 06:57:05.875645 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215]     certificate=open(WebhookConf.WEBHOOK_SSL_CERT, 'r'))
+[Mon May 20 06:57:05.875710 2019] [wsgi:error] [pid 2250:tid 140291468355328] [remote 66.70.178.216:30215] FileNotFoundError: [Errno 2] No such file or directory: '/manage-tasks.ru/site/ssl/chain.pem'
