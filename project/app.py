@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for, request
 import telebot
-#import time
+import time
 from config import Configuration, WebhookConf
 
 from flask_sqlalchemy import SQLAlchemy
@@ -47,9 +47,11 @@ admin.add_view(AdminView(Subscriptions, db.session))
 user_datastore = SQLAlchemyUserDatastore(db, Users, Role)
 security = Security(app, user_datastore)
 
-#bot.remove_webhook()
-#time.sleep(2)
-#bot.set_webhook(url=WebhookConf.WEBHOOK_URL_BASE + WebhookConf.WEBHOOK_URL_PATH,
-#                certificate=open(WebhookConf.WEBHOOK_SSL_CERT, 'r'))
+
+bot.remove_webhook()
+time.sleep(2)
+bot.set_webhook(url=WebhookConf.WEBHOOK_URL_BASE + WebhookConf.WEBHOOK_URL_PATH,
+                certificate=open(WebhookConf.WEBHOOK_SSL_CERT, 'r'))
+
 
 import view, bot_views
