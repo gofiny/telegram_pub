@@ -71,6 +71,8 @@ def callbacks(call):
         user = Users.query.filter(Users.chat_id == chat_id).first()
         write_stuff(str(user.id))
         res = user_subs.select().where(user_subs.c.user_id == user.id)
+        for sub in res:
+            text += f'{sub.title}\n\n{sub.description}\n\n'
         # for sub in all_subs:s
         #     if sub.users.filter(Users.chat_id == chat_id).first():
         #         days = dir(user_subs.c)
