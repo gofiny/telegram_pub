@@ -7,6 +7,11 @@ from keyboards import Keyboards
 from datetime import datetime
 
 
+def write_stuff(text):
+    with open('/tel_pub/telegram_pub/project/logs/stuff.log', 'a') as file_:
+        file_.write(text)
+
+
 @app.route(WebhookConf.WEBHOOK_URL_PATH, methods=['POST'])
 def webhook():
     if flask.request.headers.get('content-type') == 'application/json':
@@ -65,7 +70,7 @@ def callbacks(call):
         text = ''
         user = Users.query.filter(Users.chat_id == chat_id).first()
         res = user_subs.select().where(user_subs.c.user_id == user.id)
-        print(res)
+        write_stuff(str(res))
         # for sub in all_subs:s
         #     if sub.users.filter(Users.chat_id == chat_id).first():
         #         days = dir(user_subs.c)
