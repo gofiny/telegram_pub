@@ -69,7 +69,7 @@ def callbacks(call):
         #all_subs = Subscriptions.get_subs()
         text = ''
         user = Users.query.filter(Users.chat_id == chat_id).first()
-        res = user_subs.select().where(user_subs.c.user_id == user.id)
+        res = user_subs.select().where(user_subs.c.user_id == user.id).all()
         write_stuff(str(res))
         # for sub in all_subs:s
         #     if sub.users.filter(Users.chat_id == chat_id).first():
