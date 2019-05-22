@@ -70,7 +70,7 @@ def callbacks(call):
         text = ''
         user = Users.query.filter(Users.chat_id == chat_id).first()
         subs = db.session.query(user_subs).filter(user_subs.c.user_id == user.id).all()
-        for sub in subs:c
+        for sub in subs:
             text += f'{sub.title}\n\n{sub.description}\n\n'
         # for sub in all_subs:s
         #     if sub.users.filter(Users.chat_id == chat_id).first():
@@ -82,6 +82,8 @@ def callbacks(call):
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
         else:
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text)
+
+
     elif data[0] == 'info_about':
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Скоро будет готово')
 
