@@ -59,6 +59,7 @@ def callbacks(call):
     chat_id = call.message.chat.id
     message_id = call.message.message_id
     data = call.data.split()
+    user = Users.query.filter(Users.chat_id == chat_id).first()
 
     if data[0] == 'sub_info':
         sub = Subscriptions.query.filter(Subscriptions.data == data[1]).first()
@@ -67,17 +68,22 @@ def callbacks(call):
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
     elif data[0] == 'my_subs_info':
         text = ''
-        user = Users.query.filter(Users.chat_id == chat_id).first()
         subs = db.session.query(user_subs).filter(user_subs.c.user_id == user.id).all()
         for row in subs:
             sub = Subscriptions.query.filter(Subscriptions.id == row[1]).first()
-            text += f'{sub.title}\n\n{sub.description}\nИстекет через . дней'
+            text += f'{sub.title}\n\n{sub.description}\nИстекет через {type(row[2])} дней\n\n'
 
         if text == '':
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
         else:
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text)
 
+    elif data[0] == 'sub_buy':
+        sub = Subscriptions.query.filter_by(data=data[1]).first()
+        new_buy = user_subs(user_id=user.id, sub_id=sub.id, buy_date=datetime.now())
+        db.session.add(new_buy)
+        db.commit()
+        bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Поздравляю! Подписка приобретина')
 
     elif data[0] == 'info_about':
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Скоро будет готово')
