@@ -1,0 +1,6 @@
+
+SELECT user_id AS user_id, sub_id AS sub_id, buy_date AS buy_date 
+FROM (SELECT user_subs.user_id AS user_id, user_subs.sub_id AS sub_id, user_subs.buy_date AS buy_date 
+FROM user_subs 
+WHERE user_subs.user_id = %(user_id_1)s)
+

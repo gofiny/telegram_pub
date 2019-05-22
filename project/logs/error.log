@@ -1,1 +1,63 @@
 
+[Tue May 21 19:17:11.000094 2019] [wsgi:error] [pid 17346:tid 140208034260736] SELECT user_subs.user_id, user_subs.sub_id, user_subs.buy_date 
+[Tue May 21 19:17:11.000157 2019] [wsgi:error] [pid 17346:tid 140208034260736] FROM user_subs 
+[Tue May 21 19:17:11.000161 2019] [wsgi:error] [pid 17346:tid 140208034260736] WHERE user_subs.user_id = :user_id_1
+[Tue May 21 19:17:11.000166 2019] [wsgi:error] [pid 17346:tid 140208034260736] 
+[Tue May 21 19:18:58.282434 2019] [wsgi:error] [pid 17346:tid 140208025868032] SELECT user_subs.user_id, user_subs.sub_id, user_subs.buy_date 
+[Tue May 21 19:18:58.282453 2019] [wsgi:error] [pid 17346:tid 140208025868032] FROM user_subs 
+[Tue May 21 19:18:58.282456 2019] [wsgi:error] [pid 17346:tid 140208025868032] WHERE user_subs.user_id = :user_id_1
+[Tue May 21 19:18:58.282461 2019] [wsgi:error] [pid 17346:tid 140208025868032] 
+[Tue May 21 19:28:12.247929 2019] [wsgi:error] [pid 17664:tid 140678700988160] 2019-05-21 19:28:12,247 (util.py:65 WorkerThread1) ERROR - TeleBot: "AttributeError occurred, args=("'Select' object has no attribute 'all'",)
+[Tue May 21 19:28:12.247961 2019] [wsgi:error] [pid 17664:tid 140678700988160] Traceback (most recent call last):
+[Tue May 21 19:28:12.247965 2019] [wsgi:error] [pid 17664:tid 140678700988160]   File "/usr/local/lib/python3.6/dist-packages/telebot/util.py", line 59, in run
+[Tue May 21 19:28:12.247969 2019] [wsgi:error] [pid 17664:tid 140678700988160]     task(*args, **kwargs)
+[Tue May 21 19:28:12.247972 2019] [wsgi:error] [pid 17664:tid 140678700988160]   File "/tel_pub/telegram_pub/project/bot_views.py", line 72, in callbacks
+[Tue May 21 19:28:12.247975 2019] [wsgi:error] [pid 17664:tid 140678700988160]     res = user_subs.select().where(user_subs.c.user_id == user.id).all()
+[Tue May 21 19:28:12.247978 2019] [wsgi:error] [pid 17664:tid 140678700988160] AttributeError: 'Select' object has no attribute 'all'
+[Tue May 21 19:28:12.247982 2019] [wsgi:error] [pid 17664:tid 140678700988160] "
+[Tue May 21 19:28:12.247988 2019] [wsgi:error] [pid 17664:tid 140678700988160] 
+[Tue May 21 19:32:57.227942 2019] [wsgi:error] [pid 17807:tid 140283788621568] 2019-05-21 19:32:57,227 (util.py:65 WorkerThread1) ERROR - TeleBot: "ApiException occurred, args=('A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:\\n[b\\'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply_markup of the message"}\\']',)
+[Tue May 21 19:32:57.227987 2019] [wsgi:error] [pid 17807:tid 140283788621568] Traceback (most recent call last):
+[Tue May 21 19:32:57.227991 2019] [wsgi:error] [pid 17807:tid 140283788621568]   File "/usr/local/lib/python3.6/dist-packages/telebot/util.py", line 59, in run
+[Tue May 21 19:32:57.227995 2019] [wsgi:error] [pid 17807:tid 140283788621568]     task(*args, **kwargs)
+[Tue May 21 19:32:57.227998 2019] [wsgi:error] [pid 17807:tid 140283788621568]   File "/tel_pub/telegram_pub/project/bot_views.py", line 81, in callbacks
+[Tue May 21 19:32:57.228001 2019] [wsgi:error] [pid 17807:tid 140283788621568]     bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='\xd0\xa3 \xd0\xb2\xd0\xb0\xd1\x81 \xd0\xbd\xd0\xb5\xd1\x82 \xd0\xbd\xd0\xb8 \xd0\xbe\xd0\xb4\xd0\xbd\xd0\xbe\xd0\xb9 \xd0\xbf\xd0\xbe\xd0\xb4\xd0\xbf\xd0\xb8\xd1\x81\xd0\xba\xd0\xb8')
+[Tue May 21 19:32:57.228004 2019] [wsgi:error] [pid 17807:tid 140283788621568]   File "/usr/local/lib/python3.6/dist-packages/telebot/__init__.py", line 996, in edit_message_text
+[Tue May 21 19:32:57.228008 2019] [wsgi:error] [pid 17807:tid 140283788621568]     disable_web_page_preview, reply_markup)
+[Tue May 21 19:32:57.228011 2019] [wsgi:error] [pid 17807:tid 140283788621568]   File "/usr/local/lib/python3.6/dist-packages/telebot/apihelper.py", line 621, in edit_message_text
+[Tue May 21 19:32:57.228014 2019] [wsgi:error] [pid 17807:tid 140283788621568]     return _make_request(token, method_url, params=payload)
+[Tue May 21 19:32:57.228017 2019] [wsgi:error] [pid 17807:tid 140283788621568]   File "/usr/local/lib/python3.6/dist-packages/telebot/apihelper.py", line 56, in _make_request
+[Tue May 21 19:32:57.228027 2019] [wsgi:error] [pid 17807:tid 140283788621568]     return _check_result(method_name, result)['result']
+[Tue May 21 19:32:57.228030 2019] [wsgi:error] [pid 17807:tid 140283788621568]   File "/usr/local/lib/python3.6/dist-packages/telebot/apihelper.py", line 75, in _check_result
+[Tue May 21 19:32:57.228032 2019] [wsgi:error] [pid 17807:tid 140283788621568]     raise ApiException(msg, method_name, result)
+[Tue May 21 19:32:57.228035 2019] [wsgi:error] [pid 17807:tid 140283788621568] telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[Tue May 21 19:32:57.228038 2019] [wsgi:error] [pid 17807:tid 140283788621568] [b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply_markup of the message"}']
+[Tue May 21 19:32:57.228043 2019] [wsgi:error] [pid 17807:tid 140283788621568] "
+[Tue May 21 19:32:57.228049 2019] [wsgi:error] [pid 17807:tid 140283788621568] 
+[Tue May 21 19:40:46.470373 2019] [wsgi:error] [pid 17965:tid 140387300337408] 2019-05-21 19:40:46,470 (util.py:65 WorkerThread1) ERROR - TeleBot: "TypeError occurred, args=("'Select' object is not iterable",)
+[Tue May 21 19:40:46.470408 2019] [wsgi:error] [pid 17965:tid 140387300337408] Traceback (most recent call last):
+[Tue May 21 19:40:46.470411 2019] [wsgi:error] [pid 17965:tid 140387300337408]   File "/usr/local/lib/python3.6/dist-packages/telebot/util.py", line 59, in run
+[Tue May 21 19:40:46.470414 2019] [wsgi:error] [pid 17965:tid 140387300337408]     task(*args, **kwargs)
+[Tue May 21 19:40:46.470417 2019] [wsgi:error] [pid 17965:tid 140387300337408]   File "/tel_pub/telegram_pub/project/bot_views.py", line 74, in callbacks
+[Tue May 21 19:40:46.470420 2019] [wsgi:error] [pid 17965:tid 140387300337408]     for sub in res:
+[Tue May 21 19:40:46.470423 2019] [wsgi:error] [pid 17965:tid 140387300337408] TypeError: 'Select' object is not iterable
+[Tue May 21 19:40:46.470427 2019] [wsgi:error] [pid 17965:tid 140387300337408] "
+[Tue May 21 19:40:46.470432 2019] [wsgi:error] [pid 17965:tid 140387300337408] 
+[Tue May 21 19:45:26.232962 2019] [wsgi:error] [pid 18106:tid 139694602118912] 2019-05-21 19:45:26,232 (util.py:65 WorkerThread1) ERROR - TeleBot: "ApiException occurred, args=('A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:\\n[b\\'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply_markup of the message"}\\']',)
+[Tue May 21 19:45:26.232994 2019] [wsgi:error] [pid 18106:tid 139694602118912] Traceback (most recent call last):
+[Tue May 21 19:45:26.232997 2019] [wsgi:error] [pid 18106:tid 139694602118912]   File "/usr/local/lib/python3.6/dist-packages/telebot/util.py", line 59, in run
+[Tue May 21 19:45:26.232999 2019] [wsgi:error] [pid 18106:tid 139694602118912]     task(*args, **kwargs)
+[Tue May 21 19:45:26.233001 2019] [wsgi:error] [pid 18106:tid 139694602118912]   File "/tel_pub/telegram_pub/project/bot_views.py", line 83, in callbacks
+[Tue May 21 19:45:26.233003 2019] [wsgi:error] [pid 18106:tid 139694602118912]     bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='\xd0\xa3 \xd0\xb2\xd0\xb0\xd1\x81 \xd0\xbd\xd0\xb5\xd1\x82 \xd0\xbd\xd0\xb8 \xd0\xbe\xd0\xb4\xd0\xbd\xd0\xbe\xd0\xb9 \xd0\xbf\xd0\xbe\xd0\xb4\xd0\xbf\xd0\xb8\xd1\x81\xd0\xba\xd0\xb8')
+[Tue May 21 19:45:26.233006 2019] [wsgi:error] [pid 18106:tid 139694602118912]   File "/usr/local/lib/python3.6/dist-packages/telebot/__init__.py", line 996, in edit_message_text
+[Tue May 21 19:45:26.233008 2019] [wsgi:error] [pid 18106:tid 139694602118912]     disable_web_page_preview, reply_markup)
+[Tue May 21 19:45:26.233010 2019] [wsgi:error] [pid 18106:tid 139694602118912]   File "/usr/local/lib/python3.6/dist-packages/telebot/apihelper.py", line 621, in edit_message_text
+[Tue May 21 19:45:26.233018 2019] [wsgi:error] [pid 18106:tid 139694602118912]     return _make_request(token, method_url, params=payload)
+[Tue May 21 19:45:26.233020 2019] [wsgi:error] [pid 18106:tid 139694602118912]   File "/usr/local/lib/python3.6/dist-packages/telebot/apihelper.py", line 56, in _make_request
+[Tue May 21 19:45:26.233021 2019] [wsgi:error] [pid 18106:tid 139694602118912]     return _check_result(method_name, result)['result']
+[Tue May 21 19:45:26.233023 2019] [wsgi:error] [pid 18106:tid 139694602118912]   File "/usr/local/lib/python3.6/dist-packages/telebot/apihelper.py", line 75, in _check_result
+[Tue May 21 19:45:26.233025 2019] [wsgi:error] [pid 18106:tid 139694602118912]     raise ApiException(msg, method_name, result)
+[Tue May 21 19:45:26.233026 2019] [wsgi:error] [pid 18106:tid 139694602118912] telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[Tue May 21 19:45:26.233028 2019] [wsgi:error] [pid 18106:tid 139694602118912] [b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply_markup of the message"}']
+[Tue May 21 19:45:26.233032 2019] [wsgi:error] [pid 18106:tid 139694602118912] "
+[Tue May 21 19:45:26.233035 2019] [wsgi:error] [pid 18106:tid 139694602118912] 
