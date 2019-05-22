@@ -85,7 +85,7 @@ def callbacks(call):
     elif data[0] == 'sub_buy':
         sub = Subscriptions.query.filter_by(data=data[1]).first()
         new_buy = db.session.execute(user_subs).insert().values(user_id=user.id, sub_id=sub.id, buy_date=datetime.now())
-        db.session.add(new_buy)c
+        db.session.add(new_buy)
         db.commit()
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Поздравляю! Подписка приобретина')
 
