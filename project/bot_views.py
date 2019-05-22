@@ -74,7 +74,7 @@ def callbacks(call):
             sub_buy_time = str(row[2])[0:-7]
             sub_buy_time = datetime.strptime(sub_buy_time, '%Y-%m-%d %H:%M:%S')
             time_left = datetime.now() - sub_buy_time
-            time_left = (sub.work_time * 24) - ((time_left.seconds * 60) * 60)
+            time_left = 'доделать'п
             text += f'{sub.title}\n\n{sub.description}\nИстекет через {time_left} минут\n\n'
 
         if text == '':
@@ -85,7 +85,6 @@ def callbacks(call):
     elif data[0] == 'sub_buy':
         sub = Subscriptions.query.filter_by(data=data[1]).first()
         db.session.execute(user_subs.insert().values(user_id=user.id, sub_id=sub.id, buy_date=datetime.now()))
-        #db.session.add(new_buy)
         db.session.commit()
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Поздравляю! Подписка приобретина')
 
