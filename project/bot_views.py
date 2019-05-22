@@ -69,10 +69,9 @@ def callbacks(call):
         #all_subs = Subscriptions.get_subs()
         text = ''
         user = Users.query.filter(Users.chat_id == chat_id).first()
-        res = db.session.query(user_subs).filter(user_subs.c.user_id == user.id).all()
-        write_stuff(f'{res}\n\n')
-        # for sub in res:
-        #     text += f'{sub.title}\n\n{sub.description}\n\n'
+        subs = db.session.query(user_subs).filter(user_subs.c.user_id == user.id).all()
+        for sub in subs:c
+            text += f'{sub.title}\n\n{sub.description}\n\n'
         # for sub in all_subs:s
         #     if sub.users.filter(Users.chat_id == chat_id).first():
         #         days = dir(user_subs.c)
