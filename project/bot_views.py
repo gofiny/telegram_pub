@@ -69,7 +69,7 @@ def callbacks(call):
         #all_subs = Subscriptions.get_subs()
         text = ''
         user = Users.query.filter(Users.chat_id == chat_id).first()
-        res = db.session.query(user_subs.select().where(user_subs.c.user_id == user.id)).all()
+        res = db.session.query(user_subs).where(user_subs.c.user.id == user.id).all()
         write_stuff(f'{res}\n\n')
         # for sub in res:
         #     text += f'{sub.title}\n\n{sub.description}\n\n'
