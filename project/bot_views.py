@@ -70,7 +70,7 @@ def callbacks(call):
         user = Users.query.filter(Users.chat_id == chat_id).first()
         subs = db.session.query(user_subs).filter(user_subs.c.user_id == user.id).all()
         for row in subs:
-            sub = Subscriptions.query.filer(Subscriptions.id == row[1]).first()
+            sub = Subscriptions.query.filter(Subscriptions.id == row[1]).first()
             text += f'{sub.title}\n\n{sub.description}\nИстекет через . дней'
 
         if text == '':
