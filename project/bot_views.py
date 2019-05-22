@@ -66,17 +66,12 @@ def callbacks(call):
         keyboard = Keyboards.buy_button(sub.data)
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
     elif data[0] == 'my_subs_info':
-        #all_subs = Subscriptions.get_subs()
         text = ''
         user = Users.query.filter(Users.chat_id == chat_id).first()
         subs = db.session.query(user_subs).filter(user_subs.c.user_id == user.id).all()
-        for sub in subs:
-            text += f'{sub.title}\n\n{sub.description}\n\n'
-        # for sub in all_subs:s
-        #     if sub.users.filter(Users.chat_id == chat_id).first():
-        #         days = dir(user_subs.c)
-        #         print(days, '\n\n', dir(user_subs.select))
-        #         text += f'{sub.title}\n{sub.description}\nОсталось столько-то дней\n\n'
+        for row in subs:
+            sub = Subscriptions.query.filer(Subscriptions.id == row[1]).first()
+            text += f'{sub.title}\n\n{sub.description}\nИстекет через . дней'
 
         if text == '':
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
