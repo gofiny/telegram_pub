@@ -74,7 +74,7 @@ def callbacks(call):
             sub_buy_time = str(row[2])[0:-7]
             sub_buy_time = datetime.strptime(sub_buy_time, '%Y-%m-%d %H:%M:%S')
             time_left = datetime.now() - sub_buy_time
-            time_left = 'доделать'п
+            time_left = 'доделать'
             text += f'{sub.title}\n\n{sub.description}\nИстекет через {time_left} минут\n\n'
 
         if text == '':
