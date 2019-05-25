@@ -80,7 +80,6 @@ def callbacks(call):
             sub_buy_time = datetime.strptime(sub_buy_time, '%Y-%m-%d %H:%M:%S')
             time_left = sub_buy_time.second + (sub.work_time * 24 * 60 * 60)
             time_left = time_left - datetime.now().second
-            del_sub(user_id=user.id, sub_id=sub.id)
             if time_left < 0:
                 del_sub(user_id=user.id, sub_id=sub.id)
                 left_str = 'Подписка истекла'
