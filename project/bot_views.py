@@ -78,7 +78,7 @@ def callbacks(call):
             if time_left < 0:
                 time_left = 'истекла!'
             else:
-                time_left = time_left * 60 * 60
+                time_left = time_left / 60 / 60
 
             text += f'{sub.title}\n\n{sub.description}\nИстекет через {time_left} часов\n\n'
 
