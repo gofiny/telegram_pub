@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create post</title>
+</head>
+<body>
+    <form action="url_for('')" method="post">
+        <input name="title" placeholder="Название поста" type="text"><br>
+        <input name="text" placeholder="Текст поста" type="text"><br>
+        {% for sub in subs %}
+            <input name="sub_{{ sub.title }} value='{{ sub.title }}'">
+        {% endfor %}
+        <br>
+        <input name="image_url" placeholder="Картинка" type="file"><br>
+        <button>Создать пост</button>
+    </form>
+</body>
+</html>
