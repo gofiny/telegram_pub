@@ -9,7 +9,7 @@
         <input name="title" placeholder="Название поста" type="text"><br>
         <input name="text" placeholder="Текст поста" type="text"><br>
         {% for sub in subs %}
-            <input name="sub_{{ sub.title }} value='{{ sub.title }}'">
+            <input name="sub_{{ sub.title }} value='{{ sub.title }}' type='checkbox'">
         {% endfor %}
         <br>
         <input name="image_url" placeholder="Картинка" type="file"><br>
