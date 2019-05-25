@@ -12,6 +12,11 @@ def write_stuff(text):
         file_.write(text)
 
 
+def del_sub(user_id, sub_id):
+    db.session.query(user_subs).filter_by(user_id=user_id).filter_by(sub_id=sub_id).all().delete()
+    db.session.commit()
+
+
 @app.route(WebhookConf.WEBHOOK_URL_PATH, methods=['POST'])
 def webhook():
     if flask.request.headers.get('content-type') == 'application/json':
@@ -24,7 +29,7 @@ def webhook():
 
 
 @bot.message_handler(commands=['start'])
-def test(message):
+def register(message):
     user = Users.get_user(message.chat.id)
     chat_id = message.chat.id
     username = message.chat.username
@@ -75,12 +80,19 @@ def callbacks(call):
             sub_buy_time = datetime.strptime(sub_buy_time, '%Y-%m-%d %H:%M:%S')
             time_left = sub_buy_time.second + (sub.work_time * 24 * 60 * 60)
             time_left = time_left - datetime.now().second
+            del_sub(user_id=user.id, sub_id=sub.id)
             if time_left < 0:
-                time_left = 'истекла!'
+                del_sub(user_id=user.id, sub_id=sub.id)
+                left_str = 'Подписка истекла'
             else:
                 time_left = time_left / 60 / 60
+                if time_left > 24:
+                    time_left = time_left / 24
+                    left_str = f'Подписка заканчивается через {round(time_left)} дней'
+                else:
+                    left_str = f'Подписка заканчивается через {round(time_left)} часов'
 
-            text += f'{sub.title}\n\n{sub.description}\nИстекет через {time_left} часов\n\n'
+            text += f'{sub.title}\n\n{sub.description}\n{left_str}\n\n'
 
         if text == '':
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
