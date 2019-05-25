@@ -15,6 +15,12 @@ user_roles = db.Table(
     db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
 )
 
+post_subs = db.Table(
+    'post_subs',
+    db.Column('post_id', db.Integer(), db.ForeignKey('post.id')),
+    db.Column('sub_id', db.Integer(), db.ForeignKey('subscriptions.id'))
+)
+
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -69,3 +75,18 @@ class Role(db.Model, RoleMixin):
 
     def __repr__(self):
         return f'{self.name}'
+
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(35))
+    text = db.Column(db.String(255))
+    image_url = db.Column(db.String(255), nullable=True, default=None)
+    roles = db.relationship('Subscriptions', secondary=post_subs, backref=db.backref('posts', lazy='dynamic'))
+
+    def __init__(self, *args, **kwargs):
+        super(Post, self).__init__(*args, **kwargs)
+
+    def __repr__(self):
+        return self.title
+
