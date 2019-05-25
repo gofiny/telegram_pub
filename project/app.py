@@ -20,7 +20,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 # Admin
-from models import Users, Subscriptions, Role, user_subs
+from models import Users, Subscriptions, Role, Post
 
 
 class AdminView(ModelView):
@@ -42,6 +42,7 @@ class HomeAdminView(AdminIndexView):
 admin = Admin(app, 'FlaskApp', url='/', index_view=HomeAdminView(name='Home'))
 admin.add_view(AdminView(Users, db.session))
 admin.add_view(AdminView(Subscriptions, db.session))
+admin.add_view((AdminView(Post, db.session)))
 
 # Security
 user_datastore = SQLAlchemyUserDatastore(db, Users, Role)
