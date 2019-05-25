@@ -96,7 +96,7 @@ def callbacks(call):
                 else:
                     left_str = f'Подписка заканчивается через {round(time_left)} часов'
 
-            text += f'{sub.title}\n\n{sub.description}\n{left_str}\n\n'
+            text += f'===={sub.title}====\n\n{sub.description}\n{left_str}\n\n'
 
         if text == '':
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
