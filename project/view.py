@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template
 from flask import request
+from models import Subscriptions
 
 
 @app.route('/')
@@ -11,7 +12,8 @@ def index():
 @app.route('/new_post/', methods=['GET', 'POST'])
 def create_post():
     if request.method == 'GET':
-        return render_template('main/create_post.html')
+        subs = Subscriptions.query.all()
+        return render_template('main/create_post.html', subs=subs)
 
 
 @app.route('/payments/')
