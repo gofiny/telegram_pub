@@ -17,6 +17,11 @@ def del_sub(user_id, sub_id):
     db.session.commit()
 
 
+def get_user_subs(user_id):
+    subs = db.session.query(user_subs).filter(user_subs.c.user_id == user_id).all()
+    return subs
+
+
 @app.route(WebhookConf.WEBHOOK_URL_PATH, methods=['POST'])
 def webhook():
     if flask.request.headers.get('content-type') == 'application/json':
@@ -73,7 +78,7 @@ def callbacks(call):
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text, reply_markup=keyboard)
     elif data[0] == 'my_subs_info':
         text = ''
-        subs = db.session.query(user_subs).filter(user_subs.c.user_id == user.id).all()
+        subs = get_user_subs(user_id=user.id)
         for row in subs:
             sub = Subscriptions.query.filter(Subscriptions.id == row[1]).first()
             sub_buy_time = str(row[2])[0:-7]
@@ -99,10 +104,19 @@ def callbacks(call):
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text)
 
     elif data[0] == 'sub_buy':
-        sub = Subscriptions.query.filter_by(data=data[1]).first()
-        db.session.execute(user_subs.insert().values(user_id=user.id, sub_id=sub.id, buy_date=datetime.now()))
-        db.session.commit()
-        bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Поздравляю! Подписка приобретина')
+        text = ''
+        subs = get_user_subs(user_id=user.id)
+        for row in subs:
+            sub = Subscriptions.query.filter(Subscriptions.id == row[1]).first()
+            if sub.data == data[1]:
+                text = 'У вас уже приобретина данная подписка'
+
+        if text == '':
+            sub = Subscriptions.query.filter_by(data=data[1]).first()
+            db.session.execute(user_subs.insert().values(user_id=user.id, sub_id=sub.id, buy_date=datetime.now()))
+            db.session.commit()
+            text = 'Поздравляю! Подписка приобретина'
+        bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=text)
 
     elif data[0] == 'info_about':
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Скоро будет готово')
