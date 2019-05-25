@@ -73,9 +73,14 @@ def callbacks(call):
             sub = Subscriptions.query.filter(Subscriptions.id == row[1]).first()
             sub_buy_time = str(row[2])[0:-7]
             sub_buy_time = datetime.strptime(sub_buy_time, '%Y-%m-%d %H:%M:%S')
-            time_left = datetime.now() - sub_buy_time
-            time_left = 'доделать'
-            text += f'{sub.title}\n\n{sub.description}\nИстекет через {time_left} минут\n\n'
+            time_left = sub_buy_time.second + (sub.work_time * 24 * 60 * 60)
+            time_left = time_left - datetime.now().second
+            if time_left < 0:
+                time_left = 'истекла!'
+            else:
+                time_left = time_left * 60 * 60
+
+            text += f'{sub.title}\n\n{sub.description}\nИстекет через {time_left} часов\n\n'
 
         if text == '':
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='У вас нет ни одной подписки')
