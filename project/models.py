@@ -81,11 +81,13 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(35))
     text = db.Column(db.String(255))
-    image_url = db.Column(db.String(255), nullable=True, default=None)
+    image = db.Column(db.LargeBinary, nullable=True, default=None)
     roles = db.relationship('Subscriptions', secondary=post_subs, backref=db.backref('posts', lazy='dynamic'))
 
     def __init__(self, *args, **kwargs):
         super(Post, self).__init__(*args, **kwargs)
+
+        #text = f'{self.title}\n\n{self.text}'
 
     def __repr__(self):
         return self.title
