@@ -13,7 +13,7 @@ def write_stuff(text):
 
 
 def del_sub(user_id, sub_id):
-    db.session.query(user_subs).filter_by(user_id=user_id).filter_by(sub_id=sub_id).all().delete()
+    db.session.query(user_subs).filter_by(user_id=user_id).filter_by(sub_id=sub_id).delete()
     db.session.commit()
 
 
