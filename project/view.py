@@ -19,6 +19,7 @@ def create_post():
     if request.method == 'POST':
         args = request.args
         write_stuff(str(args))
+        return 'ok'
 
 
 @app.route('/payments/')
