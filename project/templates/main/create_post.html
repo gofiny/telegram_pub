@@ -9,8 +9,8 @@
         <input name="title" placeholder="Название поста" type="text"><br>
         <input name="text" placeholder="Текст поста" type="text"><br>
         {% for sub in subs %}
-            <input name="sub" value="sub.data" type="checkbox">
-        <label for="sub_{{ sub.title }}">{{ sub.title }}</label>
+            <input name="sub" value="{{ sub.data }}" type="checkbox">
+        <label for="sub">{{ sub.title }}</label>
         {% endfor %}
         <br>
         <input name="image_url" placeholder="Картинка" type="file"><br>
