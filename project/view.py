@@ -18,7 +18,7 @@ def create_post():
 
     if request.method == 'POST':
         args = request.args
-        title = request.arg.get('title', 'None')
+        title = request.args.get('title', 'None')
         write_stuff(f'\n\n{args}\n{title}')
         return 'ok'
 
