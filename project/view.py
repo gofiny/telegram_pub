@@ -17,9 +17,8 @@ def create_post():
         return render_template('main/create_post.html', subs=subs)
 
     if request.method == 'POST':
-        args = request.args
-        title = request.args.get('title', 'None')
-        write_stuff(f'\n\n{args}\n{title}')
+        title = request.form
+        write_stuff(f'\n\n{title}')
         return 'ok'
 
 
