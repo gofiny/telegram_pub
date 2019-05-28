@@ -10,7 +10,7 @@ def index():
     return render_template('main/index.html')
 
 
-@app.route('/new_post', methods=['GET', 'POST'])
+@app.route('/new_post/', methods=['GET', 'POST'])
 def create_post():
     if request.method == 'GET':
         subs = Subscriptions.query.all()
