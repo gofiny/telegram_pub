@@ -21,7 +21,7 @@ manager.add_command('db', MigrateCommand)
 
 # Admin
 from .models import Users, Subscriptions, Role, Post
-c
+
 
 class AdminView(ModelView):
     def is_accessible(self):
