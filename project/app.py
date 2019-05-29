@@ -20,7 +20,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 # Admin
-from .models import Users, Subscriptions, Role, Post
+from models import Users, Subscriptions, Role, Post
 
 
 class AdminView(ModelView):
