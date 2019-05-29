@@ -56,3 +56,9 @@ bot.set_webhook(url=WebhookConf.WEBHOOK_URL_BASE + WebhookConf.WEBHOOK_URL_PATH,
 
 
 import view, bot_views
+
+
+if __name__ == "__main__":
+    app.run(host=WebhookConf.WEBHOOK_LISTEN,
+        port=WebhookConf.WEBHOOK_PORT,
+        ssl_context=(WebhookConf.WEBHOOK_SSL_CERT, WebhookConf.WEBHOOK_SSL_KEY))
