@@ -5,7 +5,7 @@
     <title>Create post</title>
 </head>
 <body>
-    <form action="{{ url_for('create_post') }}" method="post">
+    <form action="{{ url_for('create_post') }}" method="post" accept-charset="UTF-8">
         <input name="title" placeholder="Название поста" type="text"><br>
         <input name="text" placeholder="Текст поста" type="text"><br>
         {% for sub in subs %}
@@ -14,7 +14,7 @@
         {% endfor %}
         <br>
         <input name="image_url" placeholder="Картинка" type="file"><br>
-        <input type="submit" value="Создать пост">
+        <button type="submit">Создать пост</button>
     </form>
 </body>
 </html>
