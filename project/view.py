@@ -17,8 +17,10 @@ def create_post():
         return render_template('main/create_post.html', subs=subs)
 
     if request.method == 'POST':
-        title = request.form
-        write_stuff(f'\n\n{title}')
+        title = request.form.get('title', None)
+        text = request.form.get('text', None)
+        subs = request.form.get('sub', None)
+        write_stuff(f'\n\ntitle - {title}\ntext - {text}\nsubs - {subs}\n\n')
         return 'ok'
 
 
