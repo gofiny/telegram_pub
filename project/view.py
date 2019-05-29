@@ -19,7 +19,7 @@ def create_post():
     if request.method == 'POST':
         title = request.form.get('title', None)
         text = request.form.get('text', None)
-        subs = request.form.get('sub', None)
+        subs = request.form['sub']
         write_stuff(f'\n\ntitle - {title}\ntext - {text}\nsubs - {subs}\n\n')
         return 'ok'
 
